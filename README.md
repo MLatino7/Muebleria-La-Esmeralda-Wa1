@@ -82,7 +82,7 @@ Antes de una publicación comercial, reemplaza todos los nombres, textos, fotos,
 
 El carrito se guarda únicamente en el navegador con clave versionada `la-esmeralda-cart-v1`. Al restaurarse se valida su formato, cantidades y presencia/disponibilidad del producto; si cambió el catálogo, se informa y se retiran registros inválidos. Si el navegador bloquea `localStorage`, se informa que el carrito no persistirá.
 
-El teléfono y la dirección se centralizan en `src/config/store.ts`. El contacto incluye un mapa de Google Maps y una ruta para llegar a Cra. 102 No. 17A-86, Fontibón Centro, Bogotá. Los mensajes de WhatsApp contienen referencias y precios ilustrativos calculados del estado actual; el visitante debe revisar y enviarlos manualmente.
+El teléfono y la dirección se centralizan en `src/config/store.ts`. El contacto incluye el mapa del establecimiento de Google Maps y una ruta por coordenadas al pin confirmado para Cra. 102 No. 17A-86, Fontibón Centro, Bogotá. Los mensajes de WhatsApp contienen referencias y precios ilustrativos calculados del estado actual; el visitante debe revisar y enviarlos manualmente.
 
 La versión del sitio se actualiza en `package.json`. El pie de página muestra esa versión y los primeros siete caracteres del commit desplegado por GitHub Actions.
 

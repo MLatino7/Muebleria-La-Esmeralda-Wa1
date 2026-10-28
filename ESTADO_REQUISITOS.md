@@ -72,7 +72,7 @@ Resumen de avance:
 | REQ-062 | ESTADO_REQUISITOS.md | alta | [V] | `ESTADO_REQUISITOS.md` | Documento de seguimiento | Actualizar conforme avance |
 | REQ-063 | Instrucciones para sustituir datos de demostración | media | [V] | `README.md`, `CONTEXT.md` | Se indica editar JSON y reemplazar imágenes | Requiere revisión periódica |
 | REQ-064 | Registro de limitaciones y pendientes | alta | [V] | `README.md`, `CONTEXT.md` | Secciones de costo, limitaciones y evolución | Adecuado |
-| REQ-065 | Dirección y mapa para visitar la tienda | alta | [~] | `src/config/store.ts`, `src/pages/contacto.astro`, `src/styles/global.css` | Dirección centralizada, mapa embebido y enlace de ruta a Google Maps | Verificar el mapa y el enlace en el deploy |
+| REQ-065 | Dirección y mapa para visitar la tienda | alta | [~] | `src/config/store.ts`, `src/pages/contacto.astro`, `src/styles/global.css` | Mapa embebido con ficha de Google Maps y enlace de ruta por las coordenadas exactas del pin | Verificar la actualización en el deploy |
 | REQ-066 | Mensajes comerciales por tipo de mueble y pedido | alta | [~] | `src/pages/index.astro`, `src/styles/global.css` | Bloque de salas, comedores, alcobas, clósets, vitrinas, camas y bases; CTA de WhatsApp | Validar build y publicación |
 | REQ-067 | Mostrar autor, versión y commit del sitio | media | [~] | `src/layouts/SiteLayout.astro`, `package.json`, `.github/workflows/deploy.yml` | Pie de página consume versión del paquete y SHA del build | Validar metadata en la página publicada |
 
@@ -86,6 +86,7 @@ Resumen de avance:
 | 2026-10-28 | Corrección del error de carrito vacío y cierre de trazabilidad | REQ-034, REQ-052 | Test de WhatsApp actualizado y ejecutado | Ejecutar build/check final |
 | 2026-10-28 | Publicación por GitHub Pages Actions, rutas internas con base de proyecto y documentación de URL | REQ-043 a REQ-046, REQ-060 a REQ-064 | Validación/build/deploy Pages correctos; inicio y carrito HTTP 200 | Revisión visual manual pendiente |
 | 2026-10-28 | Mapa y dirección en contacto, textos comerciales por categoría y pie con crédito/versionado | REQ-065 a REQ-067 | Implementación en Astro y estilos responsive | Verificar con el siguiente deploy |
+| 2026-10-28 | Actualización del pin exacto de Mueblería La Esmeralda en Google Maps y versión patch | REQ-065, REQ-067 | Embed de Maps y ruta configurados con el lugar/coordenadas compartidos | Verificar en la página publicada |
 
 ## Reglas de actualización
 1. Antes de comenzar cada etapa, identificar los requisitos afectados.

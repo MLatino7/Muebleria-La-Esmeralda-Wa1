@@ -4,9 +4,8 @@ import { store } from "../config/store";
 import { createWhatsAppUrl } from "../lib/whatsapp";
 import { sitePath } from "../lib/paths";
 
-const mapQuery = encodeURIComponent(`${store.address}, ${store.neighborhood}, ${store.city}`);
-const mapUrl = `https://www.google.com/maps/dir/?api=1&destination=${mapQuery}`;
-const mapEmbedUrl = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
+const mapUrl = "https://www.google.com/maps/dir/?api=1&destination=4.6749138%2C-74.1448948";
+const mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.544861019246!2d-74.14489479999995!3d4.6749138000000094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9c8cf6b41b2b%3A0x9daffdb6139f9c85!2sMUEBLERIA%20LA%20ESMERALDA!5e0!3m2!1ses-419!2sco!4v1793222714741!5m2!1ses-419!2sco";
 ---
 <SiteLayout title="Contacto" description="Visita Mueblería La Esmeralda en Fontibón Centro, Bogotá, o escríbenos por WhatsApp.">
   <section class="page-intro contact-intro"><p class="eyebrow">HABLEMOS</p><h1>Ven a conocernos.<br />Diseñemos juntos.</h1><p>Visítanos en Fontibón Centro o escríbenos para consultar un producto, pedir una cotización o contarnos la idea que tienes para tu hogar.</p>
@@ -17,6 +16,6 @@ const mapEmbedUrl = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
   </section>
   <section class="contact-location" aria-labelledby="location-title">
     <div class="location-copy"><p class="eyebrow">ENCUÉNTRANOS</p><h2 id="location-title">Estamos en Fontibón Centro</h2><p>Cra. 102 No. 17A-86<br />Fontibón Centro, Bogotá</p><p class="small-note">Cerca del Parque Central de Fontibón. Consulta la ruta antes de visitarnos.</p><a class="button button-dark" href={mapUrl} target="_blank" rel="noopener noreferrer">Cómo llegar con Google Maps <span aria-hidden="true">↗</span></a></div>
-    <div class="map-frame"><iframe src={mapEmbedUrl} title="Mapa de ubicación de Mueblería La Esmeralda en Fontibón Centro, Bogotá" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+    <div class="map-frame"><iframe src={mapEmbedUrl} title="Ubicación exacta de Mueblería La Esmeralda en Google Maps" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
   </section>
 </SiteLayout>

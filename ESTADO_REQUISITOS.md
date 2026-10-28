@@ -1,7 +1,7 @@
 # ESTADO_REQUISITOS — Mueblería La Esmeralda
 
 Fecha de última actualización: 2026-10-28
-Fase actual: configuración + catálogo + carrito + cotización + documentación
+Fase actual: catálogo + carrito + cotización + publicación en GitHub Pages
 
 Resumen de avance:
 - Total de requisitos: 31
@@ -57,9 +57,9 @@ Resumen de avance:
 | REQ-040 | Dockerfile | alta | [V] | `Dockerfile` | Archivo válido para Node 22 LTS | Requiere probar en entorno Docker |
 | REQ-041 | Docker Compose | alta | [V] | `compose.yaml` | Orquestación para dev local | Requiere arranque real |
 | REQ-042 | Ejecución local reproducible | alta | [V] | `README.md`, `compose.yaml` | Instrucciones detalladas | Validación real pendiente |
-| REQ-043 | Compilación estática | alta | [~] | `astro.config.mjs`, `package.json` | `npm run build` pendiente ejecución | Ejecutar en entorno con npm |
-| REQ-044 | GitHub Actions | alta | [V] | `.github/workflows/deploy.yml` | Workflow de validación y deploy opcional | No se ejecutó en GitHub |
-| REQ-045 | Configuración correcta de rutas base | media | [V] | `astro.config.mjs` | `base` ajustado a Cloudflare/GitHub Pages | Configuración con `DEPLOY_TARGET` |
+| REQ-043 | Compilación estática | alta | [V] | `astro.config.mjs`, `package.json`, `.github/workflows/deploy.yml` | `npm run check`, pruebas y build pasaron en Actions en el commit inicial | La nueva compilación Pages se validará en la siguiente ejecución |
+| REQ-044 | GitHub Actions | alta | [~] | `.github/workflows/deploy.yml` | Se añade build y deploy con `actions/upload-pages-artifact` y `actions/deploy-pages` | Pendiente comprobar la ejecución de publicación |
+| REQ-045 | Configuración correcta de rutas base | media | [V] | `astro.config.mjs`, `src/lib/paths.ts`, `src/components/CartPage.tsx` | `DEPLOY_TARGET=github-pages` aplica prefijo de repositorio y enlaces internos usan `sitePath()` | Verificar URL pública tras el despliegue |
 | REQ-046 | Documentación de condiciones de alojamiento | media | [V] | `README.md` | Incorpora advertencia de GitHub Pages y Cloudflare | Verificado documental |
 | REQ-050 | Pruebas de catálogo | alta | [V] | `src/lib/catalog.test.ts` | 4 tests ejecutados | Verificado en entorno actual |
 | REQ-051 | Pruebas del carrito | alta | [V] | `src/lib/cart.test.ts` | 4 tests ejecutados | Verificado en entorno actual |
@@ -81,6 +81,7 @@ Resumen de avance:
 | 2026-10-28 | Implementación del carrito y mensajes de WhatsApp | REQ-020 a REQ-035 | Tests de carrito y cotización | Validación final de build/check |
 | 2026-10-28 | Configuración de Docker, workflow y documentación | REQ-040 a REQ-064 | README/CONTEXT y workflow creados | Ejecutar validación real |
 | 2026-10-28 | Corrección del error de carrito vacío y cierre de trazabilidad | REQ-034, REQ-052 | Test de WhatsApp actualizado y ejecutado | Ejecutar build/check final |
+| 2026-10-28 | Publicación por GitHub Pages Actions, rutas internas con base de proyecto y documentación de URL | REQ-043 a REQ-046, REQ-060 a REQ-064 | Workflow configurado para Pages y rutas revisadas | Confirmar nueva ejecución y respuesta de la URL pública |
 
 ## Reglas de actualización
 1. Antes de comenzar cada etapa, identificar los requisitos afectados.

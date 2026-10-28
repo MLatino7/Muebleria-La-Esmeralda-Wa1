@@ -86,19 +86,25 @@ El contacto está centralizado en `src/config/store.ts`; allí se cambia el núm
 
 ## Despliegue
 
-`npm run build` genera una web estática en `dist/`. El workflow `.github/workflows/deploy.yml` ejecuta `npm ci`, `npm run check`, `npm test` y `npm run build` al actualizar `main` o manualmente. El paso de publicación a Cloudflare Pages se activa en una subida a `main` solo si existen estos secretos de GitHub Actions:
+`npm run build` genera una web estática en `dist/`. El workflow `.github/workflows/deploy.yml` ejecuta `npm ci`, `npm run check`, `npm test` y `npm run build` al actualizar `main` o al lanzarlo manualmente desde `main`. Después publica en GitHub Pages usando Actions. La URL del sitio de proyecto es:
+
+`https://mlatino7.github.io/Muebleria-La-Esmeralda-Wa1/`
+
+En el repositorio, configura **Settings → Pages → Build and deployment → Source: GitHub Actions**. El enlace se activará cuando la ejecución del workflow termine correctamente. Para esta compilación, Astro usa la ruta base del repositorio y los enlaces internos deben pasar por `sitePath()` para funcionar bajo ese prefijo.
+
+La publicación opcional a Cloudflare Pages también se intenta en una subida a `main` si existen estos secretos de GitHub Actions:
 
 - `CLOUDFLARE_API_TOKEN` (permisos necesarios para publicar en Pages).
 - `CLOUDFLARE_ACCOUNT_ID`.
 - `CLOUDFLARE_PAGES_PROJECT`.
 
-El workflow solicita solo `contents: read` de GitHub; los secretos no se incorporan al frontend. Para una configuración inicial, crea un proyecto de Cloudflare Pages y limita el token al recurso/permisos de Pages requeridos. El despliegue no se ha ejecutado desde este entorno.
+Los secretos de Cloudflare no se incorporan al frontend. Para una configuración inicial, crea un proyecto de Cloudflare Pages y limita el token al recurso/permisos de Pages requeridos.
 
 ### GitHub Pages
 
-No se configura publicación a GitHub Pages para esta demo. La documentación oficial dice que Pages aloja sitios estáticos personales, organizacionales o de proyecto, y GitHub restringe los usos que convierten GitHub en alojamiento gratuito para sitios comerciales/operaciones comerciales. Como el propósito aquí es catálogo y cotización comercial, verifica siempre las condiciones vigentes antes de publicarla allí; se recomienda Cloudflare Pages u otro proveedor apropiado. Enlaces oficiales: [About GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) y [GitHub Acceptable Use Policies](https://docs.github.com/en/site-policy/acceptable-use-policies/github-acceptable-use-policies).
+GitHub Pages admite publicación mediante workflows de GitHub Actions. Revisa las condiciones vigentes de GitHub Pages y de uso aceptable antes de usarlo para operaciones comerciales. Enlaces oficiales: [About GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) y [GitHub Acceptable Use Policies](https://docs.github.com/en/site-policy/acceptable-use-policies/github-acceptable-use-policies).
 
-La compilación usa rutas raíz para Cloudflare. Si se decide usar un sitio de proyecto de GitHub Pages tras verificar que el uso sea admisible, `DEPLOY_TARGET=github-pages` usa `GITHUB_REPOSITORY` para generar la ruta base del repositorio. Esa configuración no publica en Pages por sí sola.
+Cloudflare compila con rutas raíz. La compilación de GitHub Pages usa `DEPLOY_TARGET=github-pages` y `GITHUB_REPOSITORY` para generar la ruta base del repositorio; el workflow ya empaqueta y publica ese resultado.
 
 ## Costos, límites y evolución
 

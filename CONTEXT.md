@@ -15,21 +15,21 @@ Mueblería La Esmeralda es una demo de catálogo de muebles en español para Col
 - Formateo COP, carrito en `localStorage` versionado, cantidad, eliminación, vaciado confirmado y restauración validada.
 - Resumen dinámico de cotización y enlace al número único `573144255649`.
 - Estilos responsive, navegación semántica, texto alternativo, metadatos Open Graph, favicon y robots.
-- Docker, Compose, pruebas unitarias, workflow de validación y despliegue opcional Cloudflare Pages.
+- Docker, Compose, pruebas unitarias, workflow de validación y publicación a GitHub Pages, con despliegue opcional Cloudflare Pages.
 - Documentación y matriz de requisitos.
 
 ### Por validar o pendiente
 
-- Instalación limpia, `astro check`, pruebas y build deben ejecutarse en entorno con Node/Docker; el entorno de creación no incluye Node/npm.
+- Confirmar que la nueva ejecución de GitHub Actions publique el sitio y que la URL del proyecto responda correctamente.
 - No se ha hecho revisión visual manual en navegador ni prueba de contraste automatizada.
-- No se ha desplegado Cloudflare Pages y no existe dominio de producción para sitemap/canonical definitivo.
+- No existe dominio de producción para sitemap/canonical definitivo.
 - Las fotos externas son placeholders ilustrativos; hace falta sustituirlas por activos autorizados antes del uso comercial.
 
 ## Arquitectura
 
 Astro genera HTML estático desde `src/pages`. `src/pages/producto/[slug].astro` crea rutas mediante `getStaticPaths()` usando el catálogo JSON. React se hidrata en pequeñas islas para filtros, badge y carrito. Las funciones comunes viven en `src/lib`, y los datos de tienda/contacto en `src/config/store.ts`.
 
-La base de publicación predeterminada es `/` (alojamiento en raíz, por ejemplo Cloudflare Pages). Para un sitio de proyecto compatible con GitHub Pages, Astro admite `DEPLOY_TARGET=github-pages` y utiliza el nombre de repositorio de `GITHUB_REPOSITORY`; el workflow no habilita ese despliegue y GitHub Pages no se recomienda para el propósito comercial de esta demo.
+La base de publicación predeterminada es `/` (Cloudflare Pages). En GitHub Actions, el job de validación compila con `DEPLOY_TARGET=github-pages`, configura la ruta base desde `GITHUB_REPOSITORY`, sube `dist/` como artefacto y el job de publicación ejecuta `actions/deploy-pages`. La publicación opcional de Cloudflare conserva su compilación en ruta raíz.
 
 ### Estructura
 
@@ -71,7 +71,7 @@ El carrito persiste `{ version: 1, items: [{ productId, quantity }] }` en `local
 - Mantener el número de contacto en un único punto (`src/config/store.ts`).
 - No afirmar recepción, reserva ni confirmación automática.
 - Tratar precios, productos, disponibilidad y fotos como datos de demostración hasta reemplazarlos/autorizarlos.
-- Mantener la publicación raíz compatible con Cloudflare Pages; no publicar en GitHub Pages sin revisar sus condiciones vigentes.
+- Mantener Cloudflare con rutas raíz y GitHub Pages con base de proyecto; revisar las condiciones vigentes de GitHub Pages antes de un uso comercial.
 
 ## Riesgos y evolución futura
 

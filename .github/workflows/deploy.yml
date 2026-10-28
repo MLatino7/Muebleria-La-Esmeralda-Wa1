@@ -11,11 +11,16 @@ permissions:
 jobs:
   validate-build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
     env:
-      DEPLOY_TARGET: cloudflare
+      DEPLOY_TARGET: github-pages
     steps:
       - name: Obtener el código
         uses: actions/checkout@v4
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
@@ -29,12 +34,31 @@ jobs:
         run: npm test
       - name: Compilar sitio estático
         run: npm run build
+      - name: Empaquetar sitio para GitHub Pages
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist/
       - name: Guardar artefacto compilado
         uses: actions/upload-artifact@v4
         with:
           name: sitio-estatico
           path: dist/
           if-no-files-found: error
+
+  deploy-github-pages:
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')
+    needs: validate-build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
   deploy-cloudflare:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'

@@ -26,7 +26,7 @@ export default function CartPage() {
 
   if (!ready) return <p role="status">Cargando carrito…</p>;
   if (!items.length) return <div className="empty-state cart-empty"><p className="eyebrow">Tu selección</p><h1>Tu carrito está vacío</h1>
-    <p>Explora el catálogo y guarda aquí las piezas que quieras cotizar.</p><a className="button button-dark" href="/catalogo/">Explorar catálogo</a>
+    <p>Explora el catálogo y guarda aquí las piezas que quieras cotizar.</p><a className="button button-dark" href={sitePath("/catalogo/")}>Explorar catálogo</a>
     {notice && <p className="notice" role="status">{notice}</p>}</div>;
 
   return <div className="cart-layout">

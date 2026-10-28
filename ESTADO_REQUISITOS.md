@@ -58,13 +58,13 @@ Resumen de avance:
 | REQ-041 | Docker Compose | alta | [V] | `compose.yaml` | Orquestación para dev local | Requiere arranque real |
 | REQ-042 | Ejecución local reproducible | alta | [V] | `README.md`, `compose.yaml` | Instrucciones detalladas | Validación real pendiente |
 | REQ-043 | Compilación estática | alta | [V] | `astro.config.mjs`, `package.json`, `.github/workflows/deploy.yml` | `npm run check`, pruebas y build pasaron en Actions en el commit inicial | La nueva compilación Pages se validará en la siguiente ejecución |
-| REQ-044 | GitHub Actions | alta | [~] | `.github/workflows/deploy.yml` | Se añade build y deploy con `actions/upload-pages-artifact` y `actions/deploy-pages` | Pendiente comprobar la ejecución de publicación |
-| REQ-045 | Configuración correcta de rutas base | media | [V] | `astro.config.mjs`, `src/lib/paths.ts`, `src/components/CartPage.tsx` | `DEPLOY_TARGET=github-pages` aplica prefijo de repositorio y enlaces internos usan `sitePath()` | Verificar URL pública tras el despliegue |
+| REQ-044 | GitHub Actions | alta | [V] | `.github/workflows/deploy.yml` | Validación y deploy Pages completados correctamente en Actions | El job opcional de Cloudflare falló al iniciar |
+| REQ-045 | Configuración correcta de rutas base | media | [V] | `astro.config.mjs`, `src/lib/paths.ts`, `src/components/CartPage.tsx` | `DEPLOY_TARGET=github-pages` aplica prefijo de repositorio; inicio y carrito respondieron HTTP 200 | URL comprobada: `https://mlatino7.github.io/Muebleria-La-Esmeralda-Wa1/` |
 | REQ-046 | Documentación de condiciones de alojamiento | media | [V] | `README.md` | Incorpora advertencia de GitHub Pages y Cloudflare | Verificado documental |
 | REQ-050 | Pruebas de catálogo | alta | [V] | `src/lib/catalog.test.ts` | 4 tests ejecutados | Verificado en entorno actual |
 | REQ-051 | Pruebas del carrito | alta | [V] | `src/lib/cart.test.ts` | 4 tests ejecutados | Verificado en entorno actual |
 | REQ-052 | Pruebas de generación del mensaje | alta | [V] | `src/lib/whatsapp.test.ts` | 3 tests ejecutados | Verificado con ajuste del mensaje de error |
-| REQ-053 | Validación de compilación | alta | [~] | `package.json`, `src/**/*.ts`, `src/**/*.astro` | `npm run check` pendiente | Ejecutar tras corrección de tests |
+| REQ-053 | Validación de compilación | alta | [V] | `package.json`, `src/**/*.ts`, `src/**/*.astro` | `npm run check`, pruebas y build completados correctamente en Actions | Revisado en la ejecución del deploy Pages |
 | REQ-054 | Validación responsive y accesibilidad | media | [~] | `src/styles/global.css` | Revisión de CSS y semántica | Pendiente revisión visual |
 | REQ-055 | Revisión de enlaces y recursos | media | [V] | `src/pages/*.astro`, `src/layouts/SiteLayout.astro` | Enlaces apuntan a rutas internas y rotas | No hay rastreo automático |
 | REQ-060 | README.md | alta | [V] | `README.md` | Documento completo y contextual | Debe mantenerse actualizado |
@@ -81,7 +81,7 @@ Resumen de avance:
 | 2026-10-28 | Implementación del carrito y mensajes de WhatsApp | REQ-020 a REQ-035 | Tests de carrito y cotización | Validación final de build/check |
 | 2026-10-28 | Configuración de Docker, workflow y documentación | REQ-040 a REQ-064 | README/CONTEXT y workflow creados | Ejecutar validación real |
 | 2026-10-28 | Corrección del error de carrito vacío y cierre de trazabilidad | REQ-034, REQ-052 | Test de WhatsApp actualizado y ejecutado | Ejecutar build/check final |
-| 2026-10-28 | Publicación por GitHub Pages Actions, rutas internas con base de proyecto y documentación de URL | REQ-043 a REQ-046, REQ-060 a REQ-064 | Workflow configurado para Pages y rutas revisadas | Confirmar nueva ejecución y respuesta de la URL pública |
+| 2026-10-28 | Publicación por GitHub Pages Actions, rutas internas con base de proyecto y documentación de URL | REQ-043 a REQ-046, REQ-060 a REQ-064 | Validación/build/deploy Pages correctos; inicio y carrito HTTP 200 | Revisión visual manual pendiente; Cloudflare opcional falló al iniciar |
 
 ## Reglas de actualización
 1. Antes de comenzar cada etapa, identificar los requisitos afectados.

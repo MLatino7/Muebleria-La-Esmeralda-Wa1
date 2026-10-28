@@ -18,7 +18,7 @@ No procesa pagos, no tiene cuentas, servidor, base de datos, gestión remota de 
 - Node.js 22 LTS, Astro 5, React 19 y TypeScript 5.
 - JSON para categorías/productos, `localStorage` versionado para el carrito.
 - Vitest para pruebas, Docker Compose para desarrollo.
-- GitHub Actions para comprobaciones/compilación y despliegue opcional a Cloudflare Pages.
+- GitHub Actions para comprobaciones/compilación y publicación en GitHub Pages, con Cloudflare Pages opcional.
 
 ## Requisitos
 

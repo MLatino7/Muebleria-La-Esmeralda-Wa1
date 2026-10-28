@@ -1,0 +1,62 @@
+---
+import "../styles/global.css";
+import CartBadge from "../components/CartBadge";
+import { store } from "../config/store";
+import { sitePath } from "../lib/paths";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const { title, description, image = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85" } = Astro.props;
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | {store.name}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`${title} | ${store.name}`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <link rel="icon" type="image/svg+xml" href={sitePath("/favicon.svg")} />
+    <meta name="theme-color" content="#f5f2eb" />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <header class="site-header">
+      <a class="brand" href={sitePath("/")} aria-label={`${store.name}, inicio`}>
+        <span class="brand-mark" aria-hidden="true">E</span>
+        <span><strong>La Esmeralda</strong><small>MUEBLERÍA</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href={sitePath("/catalogo/")}>Colección</a>
+        <a href={sitePath("/nosotros/")}>Nuestra esencia</a>
+        <a href={sitePath("/contacto/")}>Contacto</a>
+      </nav>
+      <form class="header-search" action={sitePath("/catalogo/")} role="search">
+        <label class="sr-only" for="header-search">Buscar muebles</label>
+        <input id="header-search" type="search" name="q" placeholder="Buscar" />
+        <button type="submit" aria-label="Buscar">⌕</button>
+      </form>
+      <CartBadge client:load />
+    </header>
+    <main id="contenido"><slot /></main>
+    <footer class="site-footer">
+      <div class="footer-main">
+        <a class="brand brand-footer" href={sitePath("/")}><span class="brand-mark" aria-hidden="true">E</span><span><strong>La Esmeralda</strong><small>MUEBLERÍA</small></span></a>
+        <p>Espacios con intención, piezas para vivirlas.</p>
+        <nav aria-label="Navegación del pie de página">
+          <a href={sitePath("/catalogo/")}>Catálogo</a><a href={sitePath("/nosotros/")}>Nosotros</a><a href={sitePath("/contacto/")}>Contacto</a>
+        </nav>
+      </div>
+      <p class="footer-note">Precios, referencias y disponibilidad son demostrativos y deben confirmarse. Esta tienda no procesa pagos ni registra pedidos.</p>
+      <p class="copyright">© {new Date().getFullYear()} {store.name}. Demo de catálogo.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import CartPage from "../components/CartPage";
+---
+<SiteLayout title="Tu carrito" description="Revisa tu selección y prepara una solicitud de cotización por WhatsApp.">
+  <section class="page-intro compact-intro"><p class="eyebrow">TU SELECCIÓN</p><p>Revisa tus piezas antes de solicitar información.</p></section>
+  <CartPage client:load />
+</SiteLayout>

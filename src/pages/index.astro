@@ -1,0 +1,45 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { categories, products } from "../lib/catalog";
+import { formatCOP } from "../lib/currency";
+import { sitePath } from "../lib/paths";
+
+const featured = products.filter((product) => product.featured).slice(0, 4);
+---
+<SiteLayout title="Muebles para vivir cada espacio" description="Explora una colección demostrativa de muebles y decoración para imaginar tu próximo espacio.">
+  <section class="hero">
+    <img class="hero-image" src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=90" alt="Sala luminosa con muebles de madera y tonos naturales" width="2200" height="1300" fetchpriority="high" />
+    <div class="hero-overlay"></div>
+    <div class="hero-copy"><p class="eyebrow light-eyebrow">MUEBLES PARA SENTIRTE EN CASA</p><h1>La belleza de<br />vivir despacio.</h1><p>Piezas pensadas para acompañar tus momentos cotidianos.</p>
+      <a class="button button-light" href={sitePath("/catalogo/")}>Explorar colección <span aria-hidden="true">↗</span></a>
+    </div>
+    <span class="hero-index">01 — 06</span>
+  </section>
+  <section class="section category-section">
+    <div class="section-heading"><div><p class="eyebrow">HECHO PARA TU ESPACIO</p><h2>Explora por ambiente</h2></div><a class="underlined-link" href={sitePath("/catalogo/")}>Ver toda la colección ↗</a></div>
+    <div class="category-grid">{categories.map((category, index) =>
+      <a class={`category-card category-${index + 1}`} href={`${sitePath("/catalogo/")}?categoria=${category.id}`}>
+        <img src={category.image} alt={category.alt} loading="lazy" width="800" height="960" />
+        <span class="category-caption"><span>{category.name}</span><span aria-hidden="true">↗</span></span>
+      </a>)}
+    </div>
+  </section>
+  <section class="section featured-section">
+    <div class="section-heading"><div><p class="eyebrow">SELECCIÓN ESMERALDA</p><h2>Una casa, muchas historias</h2></div><a class="underlined-link" href={sitePath("/catalogo/")}>Descubre más ↗</a></div>
+    <div class="product-grid home-products">{featured.map((product) =>
+      <article class="product-card"><a class="product-image" href={sitePath(`/producto/${product.slug}/`)}><img src={product.images[0]} alt={product.alt} loading="lazy" width="720" height="880" /></a>
+        <div class="product-info"><p class="eyebrow">{categories.find((category) => category.id === product.categoryId)?.name}</p><h3><a href={sitePath(`/producto/${product.slug}/`)}>{product.name}</a></h3>
+          <p>{product.shortDescription}</p><strong>{formatCOP(product.price)}</strong><a class="text-button" href={sitePath(`/producto/${product.slug}/`)}>Ver pieza <span aria-hidden="true">↗</span></a>
+        </div></article>)}
+    </div>
+  </section>
+  <section class="inspiration">
+    <div class="inspiration-image"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1300&q=85" alt="Dormitorio sereno de tonos naturales" loading="lazy" width="1300" height="1100" /></div>
+    <div class="inspiration-copy"><p class="eyebrow">ESPACIOS CON INTENCIÓN</p><h2>Tu hogar cuenta<br />tu propia historia.</h2><p>Creemos en los espacios que invitan a pausar, compartir y disfrutar lo cotidiano. Encuentra inspiración en una colección de referencia para tu hogar.</p><a class="underlined-link" href={sitePath("/nosotros/")}>Conoce nuestra esencia ↗</a></div>
+  </section>
+  <section class="benefits section">
+    <div><span class="benefit-number">01</span><h3>Diseño atemporal</h3><p>Formas serenas pensadas para convivir con distintos estilos.</p></div>
+    <div><span class="benefit-number">02</span><h3>Elección consciente</h3><p>Explora cada pieza y consulta sus detalles antes de decidir.</p></div>
+    <div><span class="benefit-number">03</span><h3>Atención directa</h3><p>Prepara una consulta por WhatsApp y confirma cada condición con el equipo.</p></div>
+  </section>
+</SiteLayout>

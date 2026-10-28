@@ -1,0 +1,8 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { sitePath } from "../lib/paths";
+---
+<SiteLayout title="Nuestra esencia" description="Conoce la intención detrás de la propuesta de Mueblería La Esmeralda.">
+  <section class="story-hero"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=85" alt="Espacio cálido con mobiliario natural" width="2200" height="1100" /><div><p class="eyebrow light-eyebrow">NUESTRA ESENCIA</p><h1>El hogar está<br />en los detalles.</h1></div></section>
+  <section class="story-copy"><p class="eyebrow">MUEBLERÍA LA ESMERALDA</p><h2>Diseño que acompaña<br />la vida de todos los días.</h2><p>La Esmeralda es una propuesta de tienda de muebles creada para acercar inspiración y una experiencia clara al elegir piezas para el hogar. Esta versión es una demo: los productos, precios, materiales y disponibilidad son ilustrativos y no constituyen una oferta comercial confirmada.</p><a class="button button-dark" href={sitePath("/catalogo/")}>Explorar la colección</a></section>
+</SiteLayout>

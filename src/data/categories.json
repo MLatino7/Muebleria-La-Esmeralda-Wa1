@@ -1,0 +1,44 @@
+[
+  {
+    "id": "salas-sofas",
+    "name": "Salas y sofás",
+    "description": "Piezas para compartir y descansar.",
+    "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=960&q=85",
+    "alt": "Sala contemporánea con sofá de tonos neutros"
+  },
+  {
+    "id": "comedores",
+    "name": "Comedores",
+    "description": "El lugar de encuentro en casa.",
+    "image": "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=960&q=85",
+    "alt": "Comedor de madera con sillas de diseño"
+  },
+  {
+    "id": "dormitorios",
+    "name": "Dormitorios",
+    "description": "Calma y comodidad para cada noche.",
+    "image": "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=960&q=85",
+    "alt": "Dormitorio acogedor en tonos cálidos"
+  },
+  {
+    "id": "mesas-auxiliares",
+    "name": "Mesas y muebles auxiliares",
+    "description": "Detalles funcionales para cada rincón.",
+    "image": "https://images.unsplash.com/photo-1499933374294-4584851497cc?auto=format&fit=crop&w=960&q=85",
+    "alt": "Mesa auxiliar de madera junto a una sala"
+  },
+  {
+    "id": "armarios-almacenamiento",
+    "name": "Armarios y almacenamiento",
+    "description": "Orden con materiales y formas atemporales.",
+    "image": "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=960&q=85",
+    "alt": "Mueble de almacenamiento de madera clara"
+  },
+  {
+    "id": "decoracion",
+    "name": "Decoración para el hogar",
+    "description": "Objetos que dan carácter al espacio.",
+    "image": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=960&q=85",
+    "alt": "Decoración sobria en un espacio residencial"
+  }
+]

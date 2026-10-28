@@ -1,0 +1,9 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import ProductGrid from "../../components/ProductGrid";
+import { categories, products } from "../../lib/catalog";
+---
+<SiteLayout title="Colección de muebles" description="Busca muebles y decoración por categoría, precio y disponibilidad demostrativa.">
+  <section class="page-intro"><p class="eyebrow">DESCUBRE LA COLECCIÓN</p><h1>Piezas para cada espacio</h1><p>Una selección de referencia para imaginar ambientes que se sienten como hogar.</p></section>
+  <ProductGrid client:load products={products} categories={categories} initialQuery={Astro.url.searchParams.get("q") ?? ""} initialCategory={Astro.url.searchParams.get("categoria") ?? ""} />
+</SiteLayout>

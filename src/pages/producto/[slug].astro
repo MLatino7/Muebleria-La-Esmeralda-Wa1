@@ -1,0 +1,25 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import ProductDetail from "../../components/ProductDetail";
+import { categories, products } from "../../lib/catalog";
+import { sitePath } from "../../lib/paths";
+
+export function getStaticPaths() {
+  return products.map((product) => ({ params: { slug: product.slug }, props: { product } }));
+}
+
+const { product } = Astro.props;
+const category = categories.find((entry) => entry.id === product.categoryId);
+const related = products.filter((entry) => entry.categoryId === product.categoryId && entry.id !== product.id).slice(0, 3);
+---
+<SiteLayout title={product.name} description={product.shortDescription} image={product.images[0]}>
+  <div class="breadcrumbs"><a href={sitePath("/")}>Inicio</a><span>/</span><a href={sitePath("/catalogo/")}>Colección</a><span>/</span><span>{product.name}</span></div>
+  <ProductDetail client:load product={product} />
+  {related.length > 0 && <section class="section related-section">
+    <div class="section-heading"><div><p class="eyebrow">{category?.name}</p><h2>También podría gustarte</h2></div></div>
+    <div class="product-grid related-grid">{related.map((item) => <article class="product-card">
+      <a class="product-image" href={sitePath(`/producto/${item.slug}/`)}><img src={item.images[0]} alt={item.alt} loading="lazy" width="720" height="880" /></a>
+      <div class="product-info"><h3><a href={sitePath(`/producto/${item.slug}/`)}>{item.name}</a></h3><strong>{item.price.toLocaleString("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 })}</strong></div>
+    </article>)}</div>
+  </section>}
+</SiteLayout>

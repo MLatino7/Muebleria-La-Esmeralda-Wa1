@@ -1,0 +1,69 @@
+name: Comprobar y desplegar
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-build:
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_TARGET: cloudflare
+    steps:
+      - name: Obtener el código
+        uses: actions/checkout@v4
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Instalar dependencias
+        run: npm ci
+      - name: Comprobar tipos y páginas Astro
+        run: npm run check
+      - name: Ejecutar pruebas
+        run: npm test
+      - name: Compilar sitio estático
+        run: npm run build
+      - name: Guardar artefacto compilado
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitio-estatico
+          path: dist/
+          if-no-files-found: error
+
+  deploy-cloudflare:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: validate-build
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_PAGES_PROJECT: ${{ secrets.CLOUDFLARE_PAGES_PROJECT }}
+    steps:
+      - name: Obtener el código
+        uses: actions/checkout@v4
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Instalar dependencias
+        run: npm ci
+      - name: Compilar para Cloudflare Pages
+        run: npm run build
+        env:
+          DEPLOY_TARGET: cloudflare
+      - name: Publicar en Cloudflare Pages
+        if: env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != '' && env.CLOUDFLARE_PAGES_PROJECT != ''
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ env.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ env.CLOUDFLARE_PAGES_PROJECT }}
+          directory: dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

@@ -3,11 +3,20 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 import { store } from "../config/store";
 import { createWhatsAppUrl } from "../lib/whatsapp";
 import { sitePath } from "../lib/paths";
+
+const mapQuery = encodeURIComponent(`${store.address}, ${store.neighborhood}, ${store.city}`);
+const mapUrl = `https://www.google.com/maps/dir/?api=1&destination=${mapQuery}`;
+const mapEmbedUrl = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
 ---
-<SiteLayout title="Contacto" description="Comunícate con Mueblería La Esmeralda mediante WhatsApp.">
-  <section class="page-intro contact-intro"><p class="eyebrow">HABLEMOS</p><h1>¿En qué podemos ayudarte?</h1><p>Consulta los detalles de una pieza o prepara una cotización desde tu carrito.</p>
+<SiteLayout title="Contacto" description="Visita Mueblería La Esmeralda en Fontibón Centro, Bogotá, o escríbenos por WhatsApp.">
+  <section class="page-intro contact-intro"><p class="eyebrow">HABLEMOS</p><h1>Ven a conocernos.<br />Diseñemos juntos.</h1><p>Visítanos en Fontibón Centro o escríbenos para consultar un producto, pedir una cotización o contarnos la idea que tienes para tu hogar.</p>
     <a class="button button-dark" href={createWhatsAppUrl(`Hola, quisiera comunicarme con ${store.name}.`)} target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a>
+    <p><a class="contact-phone" href={createWhatsAppUrl(`Hola, quisiera comunicarme con ${store.name}.`)} target="_blank" rel="noopener noreferrer">{store.whatsappDisplay}</a></p>
     <p class="small-note">Se abrirá un mensaje preparado. Debes enviarlo manualmente; no se confirma la recepción de una solicitud.</p>
     <a class="underlined-link" href={sitePath("/catalogo/")}>Volver al catálogo ↗</a>
+  </section>
+  <section class="contact-location" aria-labelledby="location-title">
+    <div class="location-copy"><p class="eyebrow">ENCUÉNTRANOS</p><h2 id="location-title">Estamos en Fontibón Centro</h2><p>Cra. 102 No. 17A-86<br />Fontibón Centro, Bogotá</p><p class="small-note">Cerca del Parque Central de Fontibón. Consulta la ruta antes de visitarnos.</p><a class="button button-dark" href={mapUrl} target="_blank" rel="noopener noreferrer">Cómo llegar con Google Maps <span aria-hidden="true">↗</span></a></div>
+    <div class="map-frame"><iframe src={mapEmbedUrl} title="Mapa de ubicación de Mueblería La Esmeralda en Fontibón Centro, Bogotá" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
   </section>
 </SiteLayout>

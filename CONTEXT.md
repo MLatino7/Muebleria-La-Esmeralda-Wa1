@@ -14,6 +14,8 @@ Mueblería La Esmeralda es una demo de catálogo de muebles en español para Col
 - Búsqueda, categoría, intervalo de precio, orden, destacados y disponibilidad.
 - Formateo COP, carrito en `localStorage` versionado, cantidad, eliminación, vaciado confirmado y restauración validada.
 - Resumen dinámico de cotización y enlace al número único `573144255649`.
+- Dirección de contacto en Fontibón Centro, mapa de Google Maps y llamados a cotizar/pedir por WhatsApp.
+- Secciones comerciales para salas, comedores, alcobas, clósets, vitrinas, camas y bases; el pie muestra autor, versión y commit publicado.
 - Estilos responsive, navegación semántica, texto alternativo, metadatos Open Graph, favicon y robots.
 - Docker, Compose, pruebas unitarias, workflow de validación y publicación a GitHub Pages, con despliegue opcional Cloudflare Pages.
 - GitHub Pages publicado en `https://mlatino7.github.io/Muebleria-La-Esmeralda-Wa1/`; validación, build y job Pages completados correctamente en Actions.

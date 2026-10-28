@@ -16,6 +16,7 @@ jobs:
       pages: read
     env:
       DEPLOY_TARGET: github-pages
+      PUBLIC_BUILD_COMMIT: ${{ github.sha }}
     steps:
       - name: Obtener el código
         uses: actions/checkout@v4

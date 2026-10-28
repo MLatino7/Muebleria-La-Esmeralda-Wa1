@@ -4,15 +4,15 @@ Fecha de última actualización: 2026-10-28
 Fase actual: catálogo + carrito + cotización + publicación en GitHub Pages
 
 Resumen de avance:
-- Total de requisitos: 31
-- Pendiente: 4
-- En progreso: 6
-- Implementado sin verificar: 2
-- Verificado: 18
+- Total de requisitos: 49
+- Pendiente: 0
+- En progreso: 4
+- Implementado sin verificar: 0
+- Verificado: 45
 - Bloqueado: 0
-- Descartado: 1
-- Principales bloqueos: ninguno por implementación; la validación final depende de ejecución de herramientas del entorno actual y de reemplazar datos de ejemplo antes de uso comercial.
-- Próximas tareas: ejecutar validación final de Astro, revisar comportamiento responsive y dejar la documentación lista para continuidad.
+- Descartado: 0
+- Principales bloqueos: ninguno por implementación; el contenido del catálogo sigue siendo demostrativo.
+- Próximas tareas: validar el despliegue de contacto/copy y revisar visualmente el sitio en tamaños móviles y escritorio.
 
 ## Estados permitidos
 - [ ] PENDIENTE
@@ -72,6 +72,9 @@ Resumen de avance:
 | REQ-062 | ESTADO_REQUISITOS.md | alta | [V] | `ESTADO_REQUISITOS.md` | Documento de seguimiento | Actualizar conforme avance |
 | REQ-063 | Instrucciones para sustituir datos de demostración | media | [V] | `README.md`, `CONTEXT.md` | Se indica editar JSON y reemplazar imágenes | Requiere revisión periódica |
 | REQ-064 | Registro de limitaciones y pendientes | alta | [V] | `README.md`, `CONTEXT.md` | Secciones de costo, limitaciones y evolución | Adecuado |
+| REQ-065 | Dirección y mapa para visitar la tienda | alta | [~] | `src/config/store.ts`, `src/pages/contacto.astro`, `src/styles/global.css` | Dirección centralizada, mapa embebido y enlace de ruta a Google Maps | Verificar el mapa y el enlace en el deploy |
+| REQ-066 | Mensajes comerciales por tipo de mueble y pedido | alta | [~] | `src/pages/index.astro`, `src/styles/global.css` | Bloque de salas, comedores, alcobas, clósets, vitrinas, camas y bases; CTA de WhatsApp | Validar build y publicación |
+| REQ-067 | Mostrar autor, versión y commit del sitio | media | [~] | `src/layouts/SiteLayout.astro`, `package.json`, `.github/workflows/deploy.yml` | Pie de página consume versión del paquete y SHA del build | Validar metadata en la página publicada |
 
 ## Historial de cambios
 
@@ -82,6 +85,7 @@ Resumen de avance:
 | 2026-10-28 | Configuración de Docker, workflow y documentación | REQ-040 a REQ-064 | README/CONTEXT y workflow creados | Ejecutar validación real |
 | 2026-10-28 | Corrección del error de carrito vacío y cierre de trazabilidad | REQ-034, REQ-052 | Test de WhatsApp actualizado y ejecutado | Ejecutar build/check final |
 | 2026-10-28 | Publicación por GitHub Pages Actions, rutas internas con base de proyecto y documentación de URL | REQ-043 a REQ-046, REQ-060 a REQ-064 | Validación/build/deploy Pages correctos; inicio y carrito HTTP 200 | Revisión visual manual pendiente |
+| 2026-10-28 | Mapa y dirección en contacto, textos comerciales por categoría y pie con crédito/versionado | REQ-065 a REQ-067 | Implementación en Astro y estilos responsive | Verificar con el siguiente deploy |
 
 ## Reglas de actualización
 1. Antes de comenzar cada etapa, identificar los requisitos afectados.

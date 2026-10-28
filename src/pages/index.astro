@@ -3,6 +3,8 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 import { categories, products } from "../lib/catalog";
 import { formatCOP } from "../lib/currency";
 import { sitePath } from "../lib/paths";
+import { store } from "../config/store";
+import { createWhatsAppUrl } from "../lib/whatsapp";
 
 const featured = products.filter((product) => product.featured).slice(0, 4);
 ---
@@ -33,6 +35,14 @@ const featured = products.filter((product) => product.featured).slice(0, 4);
         </div></article>)}
     </div>
   </section>
+  <section class="section craft-section">
+    <div class="section-heading"><div><p class="eyebrow">HECHOS PARA TU HOGAR</p><h2>Calidad que se nota.<br />Diseño que habla de ti.</h2></div><p class="craft-intro">Muebles con materiales de calidad y opciones para que cada espacio tenga tu estilo.</p></div>
+    <div class="craft-grid">
+      <article class="craft-card"><span class="benefit-number">01</span><h3>Salas, comedores y alcobas</h3><p>Ambientes cómodos y llenos de personalidad, pensados para disfrutar cada momento en casa.</p></article>
+      <article class="craft-card"><span class="benefit-number">02</span><h3>Clósets y vitrinas a tu gusto</h3><p>Diseñamos y fabricamos a tu medida, con materiales de calidad y acabados que aprovechan cada espacio.</p></article>
+      <article class="craft-card"><span class="benefit-number">03</span><h3>Camas y bases para descansar</h3><p>Diseños cómodos y firmes, elaborados con materiales de calidad para que descanses mejor cada noche.</p></article>
+    </div>
+  </section>
   <section class="inspiration">
     <div class="inspiration-image"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1300&q=85" alt="Dormitorio sereno de tonos naturales" loading="lazy" width="1300" height="1100" /></div>
     <div class="inspiration-copy"><p class="eyebrow">ESPACIOS CON INTENCIÓN</p><h2>Tu hogar cuenta<br />tu propia historia.</h2><p>Creemos en los espacios que invitan a pausar, compartir y disfrutar lo cotidiano. Encuentra inspiración en una colección de referencia para tu hogar.</p><a class="underlined-link" href={sitePath("/nosotros/")}>Conoce nuestra esencia ↗</a></div>
@@ -41,5 +51,9 @@ const featured = products.filter((product) => product.featured).slice(0, 4);
     <div><span class="benefit-number">01</span><h3>Diseño atemporal</h3><p>Formas serenas pensadas para convivir con distintos estilos.</p></div>
     <div><span class="benefit-number">02</span><h3>Elección consciente</h3><p>Explora cada pieza y consulta sus detalles antes de decidir.</p></div>
     <div><span class="benefit-number">03</span><h3>Atención directa</h3><p>Prepara una consulta por WhatsApp y confirma cada condición con el equipo.</p></div>
+  </section>
+  <section class="order-cta">
+    <div><p class="eyebrow light-eyebrow">MUEBLERÍA LA ESMERALDA</p><h2>Tu próxima idea para el hogar empieza aquí.</h2><p>Excelentes materiales, calidad en cada detalle y diseños pensados para tu estilo. Cuéntanos qué buscas y hagamos realidad el mueble que tienes en mente.</p></div>
+    <div class="order-cta-action"><a class="button button-light" href={createWhatsAppUrl(`Hola, quisiera hacer un pedido en ${store.name}.`)} target="_blank" rel="noopener noreferrer">Haz tu pedido por WhatsApp <span aria-hidden="true">↗</span></a><a class="order-phone" href={createWhatsAppUrl(`Hola, quisiera comunicarme con ${store.name}.`)} target="_blank" rel="noopener noreferrer">{store.whatsappDisplay}</a></div>
   </section>
 </SiteLayout>

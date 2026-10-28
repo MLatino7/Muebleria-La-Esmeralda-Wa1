@@ -6,13 +6,13 @@ Fase actual: catálogo + carrito + cotización + publicación en GitHub Pages
 Resumen de avance:
 - Total de requisitos: 51
 - Pendiente: 0
-- En progreso: 3
+- En progreso: 1
 - Implementado sin verificar: 0
-- Verificado: 48
+- Verificado: 50
 - Bloqueado: 0
 - Descartado: 0
 - Principales bloqueos: ninguno por implementación; el contenido del catálogo sigue siendo demostrativo.
-- Próximas tareas: validar el despliegue de contacto/copy y revisar visualmente el sitio en tamaños móviles y escritorio.
+- Próximas tareas: revisar visualmente el sitio en tamaños móviles y escritorio.
 
 ## Estados permitidos
 - [ ] PENDIENTE
@@ -75,8 +75,8 @@ Resumen de avance:
 | REQ-065 | Dirección y mapa para visitar la tienda | alta | [V] | `src/config/store.ts`, `src/pages/contacto.astro`, `src/styles/global.css` | Embed exacto de Google Maps y ruta por las coordenadas proporcionadas; contacto respondió HTTP 200 | Pin y ficha corresponden a Mueblería La Esmeralda |
 | REQ-066 | Mensajes comerciales por tipo de mueble y pedido | alta | [V] | `src/pages/index.astro`, `src/styles/global.css` | Secciones comerciales y CTA verificados en el HTML publicado; inicio respondió HTTP 200 | Confirmado en GitHub Pages |
 | REQ-067 | Mostrar autor, versión y commit del sitio | media | [V] | `src/layouts/SiteLayout.astro`, `package.json`, `.github/workflows/deploy.yml` | Pie publicado con Miguel Latino, emojis, v1.1.1 y commit `732169f` | Confirmado en GitHub Pages |
-| REQ-068 | Mantener visible la imagen del Sofá Bruma | alta | [~] | `src/data/products.json` | URL anterior devolvía 404; reemplazo de Unsplash devuelve HTTP 200 | Verificar en el catálogo publicado |
-| REQ-069 | Dar más vida y contraste a la paleta global | media | [~] | `src/styles/global.css` | Variables migradas a marfil cálido, verde vivo y acento terracota; secciones con fondos cálidos | Revisión visual pendiente |
+| REQ-068 | Mantener visible la imagen del Sofá Bruma | alta | [V] | `src/data/products.json` | Imagen nueva devuelve HTTP 200 y su URL aparece en el HTML publicado del inicio | Confirmado en GitHub Pages |
+| REQ-069 | Dar más vida y contraste a la paleta global | media | [V] | `src/styles/global.css` | CSS publicado devuelve HTTP 200 y contiene los tonos de fondo marfil, arena y verde vivo | Revisión visual general sigue en REQ-054 |
 
 ## Historial de cambios
 
@@ -89,7 +89,7 @@ Resumen de avance:
 | 2026-10-28 | Publicación por GitHub Pages Actions, rutas internas con base de proyecto y documentación de URL | REQ-043 a REQ-046, REQ-060 a REQ-064 | Validación/build/deploy Pages correctos; inicio y carrito HTTP 200 | Revisión visual manual pendiente |
 | 2026-10-28 | Mapa y dirección en contacto, textos comerciales por categoría y pie con crédito/versionado | REQ-065 a REQ-067 | Inicio/contacto HTTP 200; marketing, teléfono y versión visibles en el HTML público | Revisión visual manual pendiente |
 | 2026-10-28 | Actualización del pin exacto de Mueblería La Esmeralda en Google Maps y versión patch | REQ-065, REQ-067 | Embed con ficha del negocio; ruta y versión v1.1.1 / commit `732169f` verificados | Solo queda la revisión visual general pendiente |
-| 2026-10-28 | Reparación de foto de Sofá Bruma y actualización de paleta | REQ-068, REQ-069 | URL rota 404 identificada y reemplazo 200 verificado; variables de color ajustadas | Verificar deploy; revisión visual de la paleta pendiente |
+| 2026-10-28 | Reparación de foto de Sofá Bruma y actualización de paleta | REQ-068, REQ-069 | Inicio y CSS publicados HTTP 200; nueva foto y colores confirmados en los activos servidos | Revisión visual general pendiente |
 
 ## Reglas de actualización
 1. Antes de comenzar cada etapa, identificar los requisitos afectados.

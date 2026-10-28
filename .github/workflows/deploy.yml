@@ -61,7 +61,7 @@ jobs:
         uses: actions/deploy-pages@v4
 
   deploy-cloudflare:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.ENABLE_CLOUDFLARE_DEPLOY == 'true'
     needs: validate-build
     runs-on: ubuntu-latest
     env:

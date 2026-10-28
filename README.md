@@ -92,13 +92,13 @@ El contacto está centralizado en `src/config/store.ts`; allí se cambia el núm
 
 En el repositorio, configura **Settings → Pages → Build and deployment → Source: GitHub Actions**. El enlace se activará cuando la ejecución del workflow termine correctamente. Para esta compilación, Astro usa la ruta base del repositorio y los enlaces internos deben pasar por `sitePath()` para funcionar bajo ese prefijo.
 
-La publicación opcional a Cloudflare Pages también se intenta en una subida a `main` si existen estos secretos de GitHub Actions:
+La publicación opcional a Cloudflare Pages se ejecuta en una subida a `main` solo si la variable de repositorio `ENABLE_CLOUDFLARE_DEPLOY` está en `true` y existen estos secretos de GitHub Actions:
 
 - `CLOUDFLARE_API_TOKEN` (permisos necesarios para publicar en Pages).
 - `CLOUDFLARE_ACCOUNT_ID`.
 - `CLOUDFLARE_PAGES_PROJECT`.
 
-Los secretos de Cloudflare no se incorporan al frontend. Para una configuración inicial, crea un proyecto de Cloudflare Pages y limita el token al recurso/permisos de Pages requeridos.
+Los secretos de Cloudflare no se incorporan al frontend. Para activarlo, crea un proyecto de Cloudflare Pages, limita el token al recurso/permisos de Pages requeridos y define `ENABLE_CLOUDFLARE_DEPLOY=true` en **Settings → Secrets and variables → Actions → Variables**.
 
 ### GitHub Pages
 

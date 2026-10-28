@@ -22,7 +22,7 @@ Mueblería La Esmeralda es una demo de catálogo de muebles en español para Col
 ### Por validar o pendiente
 
 - No se ha hecho revisión visual manual en navegador ni prueba de contraste automatizada.
-- El job opcional de Cloudflare falló al iniciar en la última ejecución; no afecta el deploy confirmado de GitHub Pages.
+- El job de Cloudflare es optativo y solo corre con `ENABLE_CLOUDFLARE_DEPLOY=true` y sus secretos configurados.
 - No existe dominio de producción para sitemap/canonical definitivo.
 - Las fotos externas son placeholders ilustrativos; hace falta sustituirlas por activos autorizados antes del uso comercial.
 

@@ -6,9 +6,9 @@ Fase actual: catálogo + carrito + cotización + publicación en GitHub Pages
 Resumen de avance:
 - Total de requisitos: 49
 - Pendiente: 0
-- En progreso: 4
+- En progreso: 1
 - Implementado sin verificar: 0
-- Verificado: 45
+- Verificado: 48
 - Bloqueado: 0
 - Descartado: 0
 - Principales bloqueos: ninguno por implementación; el contenido del catálogo sigue siendo demostrativo.
@@ -72,9 +72,9 @@ Resumen de avance:
 | REQ-062 | ESTADO_REQUISITOS.md | alta | [V] | `ESTADO_REQUISITOS.md` | Documento de seguimiento | Actualizar conforme avance |
 | REQ-063 | Instrucciones para sustituir datos de demostración | media | [V] | `README.md`, `CONTEXT.md` | Se indica editar JSON y reemplazar imágenes | Requiere revisión periódica |
 | REQ-064 | Registro de limitaciones y pendientes | alta | [V] | `README.md`, `CONTEXT.md` | Secciones de costo, limitaciones y evolución | Adecuado |
-| REQ-065 | Dirección y mapa para visitar la tienda | alta | [~] | `src/config/store.ts`, `src/pages/contacto.astro`, `src/styles/global.css` | Mapa embebido con ficha de Google Maps y enlace de ruta por las coordenadas exactas del pin | Verificar la actualización en el deploy |
-| REQ-066 | Mensajes comerciales por tipo de mueble y pedido | alta | [~] | `src/pages/index.astro`, `src/styles/global.css` | Bloque de salas, comedores, alcobas, clósets, vitrinas, camas y bases; CTA de WhatsApp | Validar build y publicación |
-| REQ-067 | Mostrar autor, versión y commit del sitio | media | [~] | `src/layouts/SiteLayout.astro`, `package.json`, `.github/workflows/deploy.yml` | Pie de página consume versión del paquete y SHA del build | Validar metadata en la página publicada |
+| REQ-065 | Dirección y mapa para visitar la tienda | alta | [V] | `src/config/store.ts`, `src/pages/contacto.astro`, `src/styles/global.css` | Embed exacto de Google Maps y ruta por las coordenadas proporcionadas; contacto respondió HTTP 200 | Pin y ficha corresponden a Mueblería La Esmeralda |
+| REQ-066 | Mensajes comerciales por tipo de mueble y pedido | alta | [V] | `src/pages/index.astro`, `src/styles/global.css` | Secciones comerciales y CTA verificados en el HTML publicado; inicio respondió HTTP 200 | Confirmado en GitHub Pages |
+| REQ-067 | Mostrar autor, versión y commit del sitio | media | [V] | `src/layouts/SiteLayout.astro`, `package.json`, `.github/workflows/deploy.yml` | Pie publicado con Miguel Latino, emojis, v1.1.1 y commit `732169f` | Confirmado en GitHub Pages |
 
 ## Historial de cambios
 
@@ -85,8 +85,8 @@ Resumen de avance:
 | 2026-10-28 | Configuración de Docker, workflow y documentación | REQ-040 a REQ-064 | README/CONTEXT y workflow creados | Ejecutar validación real |
 | 2026-10-28 | Corrección del error de carrito vacío y cierre de trazabilidad | REQ-034, REQ-052 | Test de WhatsApp actualizado y ejecutado | Ejecutar build/check final |
 | 2026-10-28 | Publicación por GitHub Pages Actions, rutas internas con base de proyecto y documentación de URL | REQ-043 a REQ-046, REQ-060 a REQ-064 | Validación/build/deploy Pages correctos; inicio y carrito HTTP 200 | Revisión visual manual pendiente |
-| 2026-10-28 | Mapa y dirección en contacto, textos comerciales por categoría y pie con crédito/versionado | REQ-065 a REQ-067 | Implementación en Astro y estilos responsive | Verificar con el siguiente deploy |
-| 2026-10-28 | Actualización del pin exacto de Mueblería La Esmeralda en Google Maps y versión patch | REQ-065, REQ-067 | Embed de Maps y ruta configurados con el lugar/coordenadas compartidos | Verificar en la página publicada |
+| 2026-10-28 | Mapa y dirección en contacto, textos comerciales por categoría y pie con crédito/versionado | REQ-065 a REQ-067 | Inicio/contacto HTTP 200; marketing, teléfono y versión visibles en el HTML público | Revisión visual manual pendiente |
+| 2026-10-28 | Actualización del pin exacto de Mueblería La Esmeralda en Google Maps y versión patch | REQ-065, REQ-067 | Embed con ficha del negocio; ruta y versión v1.1.1 / commit `732169f` verificados | Solo queda la revisión visual general pendiente |
 
 ## Reglas de actualización
 1. Antes de comenzar cada etapa, identificar los requisitos afectados.
